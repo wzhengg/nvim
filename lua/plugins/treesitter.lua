@@ -22,6 +22,7 @@ return {
 				"gowork",
 				"lua",
 				"nix",
+				"sql",
 				"vim",
 				"vimdoc",
 			},
