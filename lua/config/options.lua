@@ -5,10 +5,11 @@ opt.number = true
 opt.relativenumber = true
 
 -- indent & shift
-opt.tabstop = 2
-opt.expandtab = true
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
+-- opt.expandtab = true
 opt.shiftround = true
+opt.autoindent = true
 opt.smartindent = true
 
 -- scrolloff
