@@ -4,42 +4,19 @@ return {
 	config = function()
 		local lspconfig = require("lspconfig")
 
-		lspconfig.gopls.setup({
-			settings = {
-				gopls = {
-					gofumpt = true,
-					codelenses = {
-						gc_details = false,
-						generate = true,
-						regenerate_cgo = true,
-						run_govulncheck = true,
-						test = true,
-						tidy = true,
-						upgrade_dependency = true,
-						vendor = true,
-					},
-					hints = {
-						assignVariableTypes = true,
-						compositeLiteralFields = true,
-						compositeLiteralTypes = true,
-						constantValues = true,
-						functionTypeParameters = true,
-						parameterNames = true,
-						rangeVariableTypes = true,
-					},
-					analyses = {
-						nilness = true,
-						unusedparams = true,
-						unusedwrite = true,
-						useany = true,
-					},
-					usePlaceholders = true,
-					completeUnimported = true,
-					staticcheck = true,
-					semanticTokens = true,
-				},
-			},
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = function(args)
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
+				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = args.buf })
+				vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = args.buf })
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = args.buf })
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf })
+				vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = args.buf })
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
+			end,
 		})
+
+		lspconfig.gopls.setup({})
 
 		lspconfig.lua_ls.setup({
 			settings = {
