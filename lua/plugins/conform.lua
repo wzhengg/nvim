@@ -6,6 +6,7 @@ return {
 		formatters_by_ft = {
 			go = { "goimports", "gofumpt" },
 			lua = { "stylua" },
+			nix = { "nixfmt" },
 			sh = { "shfmt" },
 			-- javascript = { { "pretterd", "prettier" } },
 			-- typescript = { { "pretterd", "prettier" } },

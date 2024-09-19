@@ -27,5 +27,7 @@ return {
 				},
 			},
 		})
+
+		lspconfig.nixd.setup({})
 	end,
 }
