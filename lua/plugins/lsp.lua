@@ -29,5 +29,7 @@ return {
 		})
 
 		lspconfig.nixd.setup({})
+
+		lspconfig.ts_ls.setup({})
 	end,
 }
