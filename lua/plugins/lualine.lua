@@ -16,6 +16,7 @@ return {
 					},
 				},
 			},
+			lualine_x = { "filetype" },
 		},
 	},
 }
