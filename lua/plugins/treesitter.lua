@@ -47,10 +47,8 @@ return {
 					enable = true,
 					lookahead = true,
 					keymaps = {
-						["i="] = "@assignment.inner",
-						["a="] = "@assignment.outer",
-						["l="] = "@assignment.lhs",
-						["r="] = "@assignment.rhs",
+						["a="] = "@assignment.lhs",
+						["i="] = "@assignment.rhs",
 						["im"] = "@call.inner",
 						["am"] = "@call.outer",
 						["ic"] = "@class.inner",
