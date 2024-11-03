@@ -13,7 +13,8 @@ return {
 		keymap = {
 			show = "<C-space>",
 			hide = "<C-e>",
-			accept = "<cr>",
+			accept = "<CR>",
+			select_and_accept = "<C-y>",
 			select_prev = "<C-p>",
 			select_next = "<C-n>",
 
@@ -26,9 +27,14 @@ return {
 			snippet_backward = "<S-Tab>",
 		},
 
+		trigger = {
+			signature_help = { enabled = true },
+		},
+
 		windows = {
 			autocomplete = {
 				border = "single",
+				selection = "manual",
 			},
 			documenatation = {
 				border = "single",
