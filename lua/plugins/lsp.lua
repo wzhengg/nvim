@@ -1,8 +1,35 @@
 return {
 	"neovim/nvim-lspconfig",
+	dependencies = { "saghen/blink.cmp" },
 	event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-	config = function()
+
+	opts = {
+		servers = {
+			gopls = {},
+
+			lua_ls = {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			},
+
+			nixd = {},
+
+			ts_ls = {},
+		},
+	},
+
+	config = function(_, opts)
 		local lspconfig = require("lspconfig")
+
+		for server, config in pairs(opts.servers) do
+			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+			lspconfig[server].setup(config)
+		end
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
@@ -15,21 +42,5 @@ return {
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
 			end,
 		})
-
-		lspconfig.gopls.setup({})
-
-		lspconfig.lua_ls.setup({
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-				},
-			},
-		})
-
-		lspconfig.nixd.setup({})
-
-		lspconfig.ts_ls.setup({})
 	end,
 }
