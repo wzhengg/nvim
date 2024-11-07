@@ -1,6 +1,5 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets" },
 	lazy = false,
 	version = "v0.*",
 	opts = {
@@ -29,6 +28,10 @@ return {
 
 		trigger = {
 			signature_help = { enabled = true },
+		},
+
+		sources = {
+			enabled_providers = { "lsp", "path", "buffer" },
 		},
 
 		windows = {
