@@ -40,3 +40,6 @@ opt.confirm = true
 
 -- don't have 'o' add a comment
 opt.formatoptions:remove("o")
+
+-- decrease update time
+opt.updatetime = 250
