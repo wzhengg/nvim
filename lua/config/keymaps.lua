@@ -1,24 +1,24 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = " "
 
 local set = vim.keymap.set
 
--- clear search
-set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
+-- clear search highlights
+set("n", "<Esc>", "<Cmd>nohlsearch<CR>")
 
 -- better indenting
 set("v", "<", "<gv")
 set("v", ">", ">gv")
 
 -- move to window
-set("n", "<c-h>", "<c-w>h")
-set("n", "<c-j>", "<c-w>j")
-set("n", "<c-k>", "<c-w>k")
-set("n", "<c-l>", "<c-w>l")
+set("n", "<C-h>", "<C-w>h")
+set("n", "<C-j>", "<C-w>j")
+set("n", "<C-k>", "<C-w>k")
+set("n", "<C-l>", "<C-w>l")
 
 -- split window
-set("n", "<leader>-", "<c-w>s")
-set("n", "<leader>|", "<c-w>v")
+set("n", "<leader>-", "<C-w>s")
+set("n", "<leader>|", "<C-w>v")
 
 -- diagnostic
 set("n", "<leader>cd", vim.diagnostic.open_float)
