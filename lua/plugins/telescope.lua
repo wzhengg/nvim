@@ -2,9 +2,15 @@ return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		"echasnovski/mini.icons",
+		{ "nvim-lua/plenary.nvim" },
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			cond = function()
+				return vim.fn.executable("make") == 1
+			end,
+		},
+		{ "echasnovski/mini.icons" },
 	},
 	cmd = "Telescope",
 	opts = {
@@ -17,11 +23,11 @@ return {
 		local telescope = require("telescope")
 
 		telescope.setup(opts)
-		telescope.load_extension("fzf")
+		pcall(telescope.load_extension("fzf"))
 	end,
 	keys = {
-		{ "<leader>ff", "<cmd>Telescope find_files<cr>" },
-		{ "<leader>fg", "<cmd>Telescope live_grep<cr>" },
-		{ "<leader>fb", "<cmd>Telescope buffers<cr>" },
+		{ "<leader>ff", "<Cmd>Telescope find_files<CR>" },
+		{ "<leader>fg", "<Cmd>Telescope live_grep<CR>" },
+		{ "<leader>fb", "<Cmd>Telescope buffers<CR>" },
 	},
 }
