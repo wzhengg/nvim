@@ -5,7 +5,11 @@ return {
 
 	opts = {
 		servers = {
-			gopls = {},
+			gopls = {
+				settings = {
+					gopls = { gofumpt = true },
+				},
+			},
 
 			lua_ls = {
 				settings = {
