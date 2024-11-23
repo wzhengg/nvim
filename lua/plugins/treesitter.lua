@@ -9,7 +9,7 @@ return {
 		cmd = { "TSUpdate" },
 		keys = {
 			{ "<C-space>" },
-			{ "<bs>" },
+			{ "<BS>" },
 		},
 		opts = {
 			highlight = { enable = true },
@@ -39,7 +39,7 @@ return {
 					init_selection = "<C-space>",
 					node_incremental = "<C-space>",
 					scope_incremental = false,
-					node_decremental = "<bs>",
+					node_decremental = "<BS>",
 				},
 			},
 			textobjects = {
@@ -111,10 +111,5 @@ return {
 			vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
 			vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
 		end,
-	},
-
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		lazy = true,
 	},
 }
