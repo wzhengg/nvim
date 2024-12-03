@@ -24,8 +24,8 @@ set("n", "<leader>|", "<C-w>v")
 set("n", "<leader>cd", vim.diagnostic.open_float)
 
 -- quickfix
-set("n", "[q", vim.cmd.cprev)
-set("n", "]q", vim.cmd.cnext)
+set("n", "[q", "<Cmd>cprev<CR>zz")
+set("n", "]q", "<Cmd>cnext<CR>zz")
 
 -- quality-of-life yank & paste
 set("v", "<leader>p", '"_dP')
