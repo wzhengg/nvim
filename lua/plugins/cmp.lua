@@ -5,32 +5,30 @@ return {
 	opts = {
 		keymap = { preset = "default" },
 
-		accept = {
-			create_undo_point = true,
-			auto_brackets = { enabled = false },
-		},
-
-		nerd_font_variant = "normal",
-
-		trigger = {
-			signature_help = { enabled = true },
-		},
-
-		sources = {
-			enabled_providers = { "lsp", "path", "buffer" },
-		},
-
-		windows = {
-			autocomplete = {
-				border = "single",
+		completion = {
+			list = {
 				selection = "manual",
 			},
-			documenatation = {
-				border = "single",
+			accept = {
+				create_undo_point = true,
+				auto_brackets = { enabled = false },
 			},
-			signature_help = {
-				border = "single",
+			menu = {
+				enabled = true,
+			},
+			ghost_text = {
+				enabled = true,
 			},
 		},
+
+		signature = { enabled = true },
+
+		sources = {
+			completion = {
+				enabled_providers = { "lsp", "path" },
+			},
+		},
+
+		appearance = { nerd_font_variant = "normal" },
 	},
 }
