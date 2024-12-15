@@ -12,22 +12,41 @@ return {
 		},
 		{ "echasnovski/mini.icons" },
 	},
-	cmd = "Telescope",
-	opts = {
-		defaults = {
-			prompt_prefix = " ",
-			selection_caret = " ",
-		},
-	},
-	config = function(_, opts)
+	config = function()
 		local telescope = require("telescope")
+		local actions = require("telescope.actions")
+		local builtin = require("telescope.builtin")
 
-		telescope.setup(opts)
-		pcall(telescope.load_extension("fzf"))
+		telescope.setup({
+			defaults = {
+				prompt_prefix = " ",
+				selection_caret = " ",
+				mappings = {
+					i = {
+						["<C-y>"] = actions.select_default,
+					},
+				},
+			},
+			pickers = {
+				buffers = {
+					theme = "ivy",
+					mappings = {
+						i = {
+							["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+						},
+					},
+				},
+			},
+			extensions = {
+				fzf = {},
+			},
+		})
+
+		pcall(telescope.load_extension, "fzf")
+
+		vim.keymap.set("n", "<leader>ff", builtin.find_files)
+		vim.keymap.set("n", "<leader>fg", builtin.live_grep)
+		vim.keymap.set("n", "<leader>fb", builtin.buffers)
+		vim.keymap.set("n", "<leader>fh", builtin.help_tags)
 	end,
-	keys = {
-		{ "<leader>ff", "<Cmd>Telescope find_files<CR>" },
-		{ "<leader>fg", "<Cmd>Telescope live_grep<CR>" },
-		{ "<leader>fb", "<Cmd>Telescope buffers<CR>" },
-	},
 }
