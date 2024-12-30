@@ -5,6 +5,8 @@ return {
 
 	opts = {
 		servers = {
+			dockerls = {},
+
 			gopls = {
 				settings = {
 					gopls = { gofumpt = true },
