@@ -21,6 +21,7 @@ return {
 			},
 			indent = { enable = true },
 			ensure_installed = {
+				"dockerfile",
 				"html",
 				"go",
 				"gomod",
