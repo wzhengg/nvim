@@ -1,34 +1,36 @@
 return {
 	"saghen/blink.cmp",
 	lazy = false,
-	version = "v0.*",
+	version = "*",
 	opts = {
 		keymap = { preset = "default" },
 
+		appearance = { nerd_font_variant = "normal" },
+
+		sources = {
+			default = { "lsp", "path" },
+			cmdline = {},
+		},
+
 		completion = {
-			list = {
-				selection = "manual",
-			},
 			accept = {
 				create_undo_point = true,
 				auto_brackets = { enabled = false },
 			},
-			menu = {
-				enabled = true,
+			documentation = {
+				window = { border = "single" },
 			},
-			ghost_text = {
-				enabled = true,
+			ghost_text = { enabled = true },
+			list = {
+				selection = { preselect = false, auto_insert = false },
 			},
+			menu = { border = "single" },
 		},
 
-		signature = { enabled = true },
-
-		sources = {
-			completion = {
-				enabled_providers = { "lsp", "path" },
-			},
+		signature = {
+			enabled = true,
+			window = { border = "single" },
 		},
-
-		appearance = { nerd_font_variant = "normal" },
 	},
+	opts_extend = { "sources.default" },
 }
