@@ -7,6 +7,7 @@ return {
 			go = { "goimports", "gofumpt" },
 			javascript = { "prettier" },
 			javascriptreact = { "prettier" },
+			json = { "prettier" },
 			lua = { "stylua" },
 			nix = { "nixfmt" },
 			sh = { "shfmt" },
