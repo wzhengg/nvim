@@ -25,6 +25,8 @@ return {
 
 			nixd = {},
 
+			tailwindcss = {},
+
 			ts_ls = {},
 		},
 	},
