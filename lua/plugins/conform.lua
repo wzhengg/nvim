@@ -5,14 +5,10 @@ return {
 	opts = {
 		formatters_by_ft = {
 			go = { "goimports", "gofumpt" },
-			javascript = { "prettier" },
-			javascriptreact = { "prettier" },
 			json = { "prettier" },
 			lua = { "stylua" },
 			nix = { "nixfmt" },
 			sh = { "shfmt" },
-			typescript = { "prettier" },
-			typescriptreact = { "prettier" },
 		},
 		formatters = {
 			injected = { options = { ignore_errors = true } },
