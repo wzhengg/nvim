@@ -23,7 +23,27 @@ return {
 				},
 			},
 
-			nixd = {},
+			nixd = {
+				cmd = { "nixd" },
+				settings = {
+					nixd = {
+						nixpkgs = {
+							expr = "import <nixpkgs> { }",
+						},
+						formatting = {
+							command = { "nixfmt" },
+						},
+						options = {
+							-- nixos = {
+							-- 	expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.nixos.options',
+							-- },
+							-- home_manager = {
+							-- 	expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."ruixi@k-on".options',
+							-- },
+						},
+					},
+				},
+			},
 
 			tailwindcss = {},
 
