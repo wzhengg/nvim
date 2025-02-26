@@ -21,7 +21,20 @@ set("n", "<leader>-", "<C-w>s")
 set("n", "<leader>|", "<C-w>v")
 
 -- diagnostic
+local function diagnostic_jump(count, severity)
+	return function()
+		vim.diagnostic.jump({
+			count = count,
+			severity = severity,
+			float = true,
+		})
+	end
+end
 set("n", "<leader>cd", vim.diagnostic.open_float)
+set("n", "[e", diagnostic_jump(-1, vim.diagnostic.severity.ERROR))
+set("n", "]e", diagnostic_jump(1, vim.diagnostic.severity.ERROR))
+set("n", "[w", diagnostic_jump(-1, vim.diagnostic.severity.WARN))
+set("n", "]w", diagnostic_jump(1, vim.diagnostic.severity.WARN))
 
 -- quickfix
 set("n", "[q", "<Cmd>cprev<CR>zz")
