@@ -38,10 +38,13 @@ return {
 		end
 
 		vim.diagnostic.config({
+			jump = {
+				float = true,
+			},
+			severity_sort = true,
 			virtual_text = {
 				prefix = "",
 			},
-			severity_sort = true,
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
