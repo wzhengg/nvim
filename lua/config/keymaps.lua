@@ -35,6 +35,10 @@ set("n", "[e", diagnostic_jump(-1, vim.diagnostic.severity.ERROR))
 set("n", "]e", diagnostic_jump(1, vim.diagnostic.severity.ERROR))
 set("n", "[w", diagnostic_jump(-1, vim.diagnostic.severity.WARN))
 set("n", "]w", diagnostic_jump(1, vim.diagnostic.severity.WARN))
+set("n", "[i", diagnostic_jump(-1, vim.diagnostic.severity.INFO))
+set("n", "]i", diagnostic_jump(1, vim.diagnostic.severity.INFO))
+set("n", "[h", diagnostic_jump(-1, vim.diagnostic.severity.HINT))
+set("n", "]h", diagnostic_jump(1, vim.diagnostic.severity.HINT))
 
 -- quickfix
 set("n", "[q", "<Cmd>cprev<CR>zz")
