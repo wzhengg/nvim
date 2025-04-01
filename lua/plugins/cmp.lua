@@ -1,7 +1,6 @@
 return {
 	"saghen/blink.cmp",
-	-- lazy = false,
-	version = "*",
+	version = "1.*",
 
 	--@module 'blink.cmp'
 	--@type blink.cmp.Config
@@ -38,7 +37,7 @@ return {
 			},
 			documentation = {},
 			ghost_text = { enabled = true },
-			keyword = { range = "full" },
+			keyword = { range = "prefix" },
 			list = {
 				selection = { preselect = false, auto_insert = false },
 			},
@@ -47,6 +46,8 @@ return {
 		signature = {
 			enabled = true,
 		},
+
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
 }
