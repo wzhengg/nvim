@@ -7,12 +7,6 @@ return {
 		servers = {
 			dockerls = {},
 
-			gopls = {
-				settings = {
-					gopls = { gofumpt = true },
-				},
-			},
-
 			lua_ls = {
 				settings = {
 					Lua = {

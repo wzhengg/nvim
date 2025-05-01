@@ -4,7 +4,6 @@ return {
 	cmd = "ConformInfo",
 	opts = {
 		formatters_by_ft = {
-			go = { "goimports", "gofumpt" },
 			json = { "prettier" },
 			lua = { "stylua" },
 			nix = { "nixfmt" },

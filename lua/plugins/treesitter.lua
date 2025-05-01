@@ -23,11 +23,6 @@ return {
 			ensure_installed = {
 				"dockerfile",
 				"html",
-				"go",
-				"gomod",
-				"gosum",
-				"gotmpl",
-				"gowork",
 				"json",
 				"lua",
 				"markdown",
