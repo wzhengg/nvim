@@ -13,6 +13,7 @@ require("lazy").setup({
 		{ import = "plugins" },
 		-- languages
 		{ import = "plugins.lang.go" },
+		{ import = "plugins.lang.lua" },
 		{ import = "plugins.lang.typescript" },
 	},
 	-- Configure any other settings here. See the documentation for more details.

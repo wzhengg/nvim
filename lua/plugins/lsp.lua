@@ -7,16 +7,6 @@ return {
 		servers = {
 			dockerls = {},
 
-			lua_ls = {
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
-				},
-			},
-
 			nixd = {},
 
 			tailwindcss = {},

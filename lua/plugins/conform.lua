@@ -5,7 +5,6 @@ return {
 	opts = {
 		formatters_by_ft = {
 			json = { "prettier" },
-			lua = { "stylua" },
 			nix = { "nixfmt" },
 			sh = { "shfmt" },
 		},

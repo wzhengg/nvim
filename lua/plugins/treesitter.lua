@@ -24,7 +24,6 @@ return {
 				"dockerfile",
 				"html",
 				"json",
-				"lua",
 				"markdown",
 				"markdown_inline",
 				"nix",
