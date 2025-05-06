@@ -33,7 +33,7 @@ return {
 				create_undo_point = true,
 				auto_brackets = { enabled = false },
 			},
-			documentation = {},
+			documentation = { auto_show = false },
 			ghost_text = { enabled = true },
 			keyword = { range = "prefix" },
 			list = {
@@ -47,5 +47,6 @@ return {
 
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
+
 	opts_extend = { "sources.default" },
 }
