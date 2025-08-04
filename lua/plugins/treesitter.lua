@@ -21,7 +21,6 @@ return {
 		require("nvim-treesitter").install(opts.parsers)
 
 		vim.api.nvim_create_autocmd("FileType", {
-			-- pattern = opts.languages,
 			callback = function(args)
 				local buf = args.buf
 

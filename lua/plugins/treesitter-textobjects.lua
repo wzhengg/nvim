@@ -7,6 +7,7 @@ return {
 			selection_modes = {
 				["@assignment.lhs"] = "v",
 				["@assignment.rhs"] = "v",
+				["@assignment.outer"] = "v",
 				["@call.inner"] = "v",
 				["@call.outer"] = "v",
 				["@class.inner"] = "v",
@@ -19,7 +20,9 @@ return {
 				["@loop.outer"] = "v",
 				["@parameter.inner"] = "v",
 				["@parameter.outer"] = "v",
+				["@statement.outer"] = "v",
 			},
+			include_surrounding_whitespace = false,
 		},
 		move = {
 			set_jumps = true,
@@ -35,6 +38,9 @@ return {
 		end)
 		vim.keymap.set({ "x", "o" }, "i=", function()
 			select.select_textobject("@assignment.rhs", "textobjects")
+		end)
+		vim.keymap.set({ "x", "o" }, "a:", function()
+			select.select_textobject("@assignment.outer", "textobjects")
 		end)
 		vim.keymap.set({ "x", "o" }, "im", function()
 			select.select_textobject("@call.inner", "textobjects")
@@ -72,14 +78,23 @@ return {
 		vim.keymap.set({ "x", "o" }, "aa", function()
 			select.select_textobject("@parameter.outer", "textobjects")
 		end)
+		vim.keymap.set({ "x", "o" }, "a;", function()
+			select.select_textobject("@statement.outer", "textobjects")
+		end)
 
 		local swap = require("nvim-treesitter-textobjects.swap")
 
 		vim.keymap.set("n", "<leader>a", function()
-			swap.swap_next("@paramter.inner")
+			swap.swap_next("@parameter.inner")
 		end)
-		vim.keymap.set("n", "<leader>a", function()
-			swap.swap_previous("@paramter.outer")
+		vim.keymap.set("n", "<leader>A", function()
+			swap.swap_previous("@parameter.inner")
+		end)
+		vim.keymap.set("n", "<leader>}", function()
+			swap.swap_next("@function.outer")
+		end)
+		vim.keymap.set("n", "<leader>{", function()
+			swap.swap_previous("@function.outer")
 		end)
 
 		local move = require("nvim-treesitter-textobjects.move")
