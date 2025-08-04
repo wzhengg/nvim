@@ -6,10 +6,6 @@ return {
 	opts = {
 		servers = {
 			dockerls = {},
-
-			nixd = {},
-
-			tailwindcss = {},
 		},
 	},
 
