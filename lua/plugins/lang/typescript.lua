@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
-			ensure_installed = {
+			parsers = {
 				"javascript",
 				"typescript",
 				"tsx",

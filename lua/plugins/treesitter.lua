@@ -4,8 +4,8 @@ return {
 	branch = "main",
 	build = ":TSUpdate",
 	lazy = false,
-	config = function()
-		require("nvim-treesitter").install({
+	opts = {
+		parsers = {
 			"dockerfile",
 			"html",
 			"json",
@@ -15,19 +15,10 @@ return {
 			"sql",
 			"vim",
 			"vimdoc",
-
-			"go",
-			"gomod",
-			"gosum",
-			"gotmpl",
-			"gowork",
-
-			"lua",
-
-			"javascript",
-			"typescript",
-			"tsx",
-		})
+		},
+	},
+	config = function(_, opts)
+		require("nvim-treesitter").install(opts.parsers)
 
 		vim.api.nvim_create_autocmd("FileType", {
 			-- pattern = opts.languages,
