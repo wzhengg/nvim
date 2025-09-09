@@ -12,6 +12,7 @@ require("lazy").setup({
 		-- import your plugins
 		{ import = "plugins" },
 		-- languages
+		{ import = "plugins.lang.c" },
 		{ import = "plugins.lang.go" },
 		{ import = "plugins.lang.lua" },
 		{ import = "plugins.lang.nix" },
