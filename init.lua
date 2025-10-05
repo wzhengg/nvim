@@ -188,7 +188,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(ev.buf))
 		if not ok or not stats or stats.size > max_filesize then return end
 
-		if not pcall(vim.treesitter.start(ev.buf)) then return end
+		if not pcall(vim.treesitter.start, ev.buf) then return end
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end
