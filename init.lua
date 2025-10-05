@@ -1,24 +1,39 @@
+-- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+-- indent and shift
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 vim.opt.shiftround = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
+-- appearance
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.showmode = true
 vim.opt.laststatus = 3
 vim.opt.signcolumn = "yes"
 vim.opt.winborder = "single"
-vim.opt.linebreak = true
+
+-- wrap and linebreak
 vim.opt.wrap = false
+vim.opt.linebreak = true
+
+-- scrolloff
 vim.opt.sidescrolloff = 8
+
+-- better search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- split direction
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- disable swapfile
 vim.opt.swapfile = false
 
 -- set leader key
@@ -85,7 +100,7 @@ vim.keymap.set("n", "<leader>fb", require("fzf-lua").buffers)
 vim.keymap.set("n", "<leader>fh", require("fzf-lua").helptags)
 vim.keymap.set("n", "<leader>fr", require("fzf-lua").resume)
 
--- git
+-- gitsigns
 
 require("gitsigns").setup({
 	signs = {
@@ -120,7 +135,6 @@ require("gitsigns").setup({
 				gs.nav_hunk("next")
 			end
 		end)
-
 		map("n", "[c", function()
 			if vim.wo.diff then
 				vim.cmd.normal({ "[c", bang = true })
@@ -131,26 +145,17 @@ require("gitsigns").setup({
 
 		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-
-		map("n", "<leader>hu", gs.undo_stage_hunk)
-
 		map("n", "<leader>hS", gs.stage_buffer)
 		map("n", "<leader>hR", gs.reset_buffer)
+		map("n", "<leader>hu", gs.undo_stage_hunk)
 
 		map("n", "<leader>hp", gs.preview_hunk_inline)
-
-		map("n", "<leader>hb", function()
-			gs.blame_line()
-		end)
-		map("n", "<leader>hB", function()
-			gs.blame()
-		end)
+		map("n", "<leader>hb", function() gs.blame_line() end)
+		map("n", "<leader>hB", function() gs.blame() end)
 		map("n", "<leader>tb", gs.toggle_current_line_blame)
 
 		map("n", "<leader>hd", gs.diffthis)
-		map("n", "<leader>hD", function()
-			gs.diffthis("~")
-		end)
+		map("n", "<leader>hD", function() gs.diffthis("~") end)
 
 		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 	end,
@@ -201,16 +206,17 @@ require("oil").setup({
 
 vim.keymap.set("n", "-", ":Oil<CR>")
 
--- highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
-	callback = function() vim.highlight.on_yank() end
-})
-
+-- configure diagnostics
 vim.diagnostic.config({
 	jump = { float = true },
 	severity_sort = true,
 	virtual_text = true,
+})
+
+-- highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	pattern = "*",
+	callback = function() vim.highlight.on_yank() end
 })
 
 -- clear search highlights
