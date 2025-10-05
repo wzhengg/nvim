@@ -42,10 +42,7 @@ vim.cmd.colorscheme("catppuccin")
 
 -- lsp
 
-vim.lsp.enable({ "lua_ls" })
-
--- vim.lsp.config("lua_ls", {})
-
+vim.lsp.enable({ "gopls", "lua_ls", "nixd", "ts_ls" })
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
 
 -- fzf
