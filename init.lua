@@ -228,22 +228,22 @@ require("nvim-treesitter-textobjects").setup({
 })
 
 local ts_select_mappings = {
-	{ mode = { "x", "o" }, lhs = "a=", query_string = "@assignment.lhs" },
-	{ mode = { "x", "o" }, lhs = "i=", query_string = "@assignment.rhs" },
-	{ mode = { "x", "o" }, lhs = "a:", query_string = "@assignment.outer" },
-	{ mode = { "x", "o" }, lhs = "im", query_string = "@call.inner" },
-	{ mode = { "x", "o" }, lhs = "am", query_string = "@call.outer" },
-	{ mode = { "x", "o" }, lhs = "ic", query_string = "@class.inner" },
-	{ mode = { "x", "o" }, lhs = "ac", query_string = "@class.outer" },
-	{ mode = { "x", "o" }, lhs = "ii", query_string = "@conditional.inner" },
-	{ mode = { "x", "o" }, lhs = "ai", query_string = "@conditional.outer" },
-	{ mode = { "x", "o" }, lhs = "if", query_string = "@function.inner" },
-	{ mode = { "x", "o" }, lhs = "af", query_string = "@function.outer" },
-	{ mode = { "x", "o" }, lhs = "il", query_string = "@loop.inner" },
-	{ mode = { "x", "o" }, lhs = "al", query_string = "@loop.outer" },
-	{ mode = { "x", "o" }, lhs = "ia", query_string = "@parameter.inner" },
-	{ mode = { "x", "o" }, lhs = "aa", query_string = "@parameter.outer" },
-	{ mode = { "x", "o" }, lhs = "a;", query_string = "@statement.outer" },
+	{ mode = { "x", "o" }, lhs = "a=", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@assignment.lhs" },
+	{ mode = { "x", "o" }, lhs = "i=", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@assignment.rhs" },
+	{ mode = { "x", "o" }, lhs = "a:", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@assignment.outer" },
+	{ mode = { "x", "o" }, lhs = "im", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@call.inner" },
+	{ mode = { "x", "o" }, lhs = "am", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@call.outer" },
+	{ mode = { "x", "o" }, lhs = "ic", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@class.inner" },
+	{ mode = { "x", "o" }, lhs = "ac", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@class.outer" },
+	{ mode = { "x", "o" }, lhs = "ii", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@conditional.inner" },
+	{ mode = { "x", "o" }, lhs = "ai", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@conditional.outer" },
+	{ mode = { "x", "o" }, lhs = "if", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@function.inner" },
+	{ mode = { "x", "o" }, lhs = "af", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@function.outer" },
+	{ mode = { "x", "o" }, lhs = "il", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@loop.inner" },
+	{ mode = { "x", "o" }, lhs = "al", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@loop.outer" },
+	{ mode = { "x", "o" }, lhs = "ia", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@parameter.inner" },
+	{ mode = { "x", "o" }, lhs = "aa", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@parameter.outer" },
+	{ mode = { "x", "o" }, lhs = "a;", select_fn = require("nvim-treesitter-textobjects.select").select_textobject, query_string = "@statement.outer" },
 }
 
 for _, mapping in ipairs(ts_select_mappings) do
