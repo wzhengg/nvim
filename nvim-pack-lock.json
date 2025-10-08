@@ -1,0 +1,21 @@
+{
+  "plugins": {
+    "fzf-lua": [],
+    "gitsigns.nvim": [],
+    "mini.icons": {
+      "version": "'main'"
+    },
+    "mini.statusline": {
+      "version": "'main'"
+    },
+    "nvim": [],
+    "nvim-lspconfig": [],
+    "nvim-treesitter": {
+      "version": "'main'"
+    },
+    "nvim-treesitter-textobjects": {
+      "version": "'main'"
+    },
+    "oil.nvim": []
+  }
+}
