@@ -121,7 +121,7 @@ require("gitsigns").setup({
 		untracked = { text = "┆" },
 	},
 	on_attach = function(bufnr)
-		local gs = package.loaded.gitsigns
+		local gitsigns = require("gitsigns")
 
 		local function map(mode, l, r, opts)
 			opts = opts or {}
@@ -133,32 +133,37 @@ require("gitsigns").setup({
 			if vim.wo.diff then
 				vim.cmd.normal({ "]c", bang = true })
 			else
-				gs.nav_hunk("next")
+				gitsigns.nav_hunk("next")
 			end
 		end)
 		map("n", "[c", function()
 			if vim.wo.diff then
 				vim.cmd.normal({ "[c", bang = true })
 			else
-				gs.nav_hunk("prev")
+				gitsigns.nav_hunk("prev")
 			end
 		end)
 
-		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-		map("n", "<leader>hS", gs.stage_buffer)
-		map("n", "<leader>hR", gs.reset_buffer)
-		map("n", "<leader>hu", gs.undo_stage_hunk)
+		map("n", "<leader>hs", gitsigns.stage_hunk)
+		map("n", "<leader>hr", gitsigns.reset_hunk)
 
-		map("n", "<leader>hp", gs.preview_hunk_inline)
-		map("n", "<leader>hb", function() gs.blame_line() end)
-		map("n", "<leader>hB", function() gs.blame() end)
-		map("n", "<leader>tb", gs.toggle_current_line_blame)
+		map("v", "<leader>hs", function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end)
+		map("v", "<leader>hr", function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end)
 
-		map("n", "<leader>hd", gs.diffthis)
-		map("n", "<leader>hD", function() gs.diffthis("~") end)
+		map("n", "<leader>hS", gitsigns.stage_buffer)
+		map("n", "<leader>hR", gitsigns.reset_buffer)
 
-		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+		map("n", "<leader>hu", gitsigns.undo_stage_hunk)
+
+		map("n", "<leader>hp", gitsigns.preview_hunk_inline)
+		map("n", "<leader>hb", gitsigns.blame_line)
+		map("n", "<leader>hB", gitsigns.blame)
+		map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
+
+		map("n", "<leader>hd", gitsigns.diffthis)
+		map("n", "<leader>hD", function() gitsigns.diffthis("~") end)
+
+		map({ "o", "x" }, "ih", gitsigns.select_hunk)
 	end,
 })
 
