@@ -49,6 +49,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.statusline",                   version = "main", },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter",             version = "main", },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main", },
+	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 })
 
@@ -59,7 +60,6 @@ vim.cmd.colorscheme("catppuccin")
 -- lsp
 
 vim.lsp.enable({ "gopls", "lua_ls", "nixd", "ts_ls" })
-vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
 
 -- fzf
 
@@ -194,7 +194,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		if not pcall(vim.treesitter.start, ev.buf) then return end
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-	end
+	end,
 })
 
 -- treesitter-textobjects
@@ -294,7 +294,25 @@ require("oil").setup({
 	skip_confirm_for_simple_edits = true,
 })
 
-vim.keymap.set("n", "-", ":Oil<CR>")
+vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
+
+-- conform
+
+require("conform").setup({
+	formatters_by_ft = {
+		go = { "goimports", "gofmt" },
+		nix = { "nixfmt" },
+	},
+	format_on_save = {
+		timeout_ms = 500,
+		lsp_format = "fallback",
+	},
+	default_format_opts = {
+		lsp_format = "fallback",
+	},
+})
+
+vim.keymap.set({ "n", "v" }, "<leader>cf", require("conform").format)
 
 -- configure diagnostics
 vim.diagnostic.config({
@@ -305,12 +323,11 @@ vim.diagnostic.config({
 
 -- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
 	callback = function() vim.highlight.on_yank() end
 })
 
 -- clear search highlights
-vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>")
 
 -- keep selection on indent
 vim.keymap.set("v", "<", "<gv")
@@ -332,8 +349,8 @@ vim.keymap.set("n", "[h", diagnostic_jump(-1, vim.diagnostic.severity.HINT))
 vim.keymap.set("n", "]h", diagnostic_jump(1, vim.diagnostic.severity.HINT))
 
 -- navigate quickfix
-vim.keymap.set("n", "[q", ":cprev<CR>zz")
-vim.keymap.set("n", "]q", ":cnext<CR>zz")
+vim.keymap.set("n", "[q", "<Cmd>cprev<CR>zz")
+vim.keymap.set("n", "]q", "<Cmd>cnext<CR>zz")
 
 -- quality-of-life yank, delete, paste
 vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y')
