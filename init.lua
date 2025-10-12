@@ -17,6 +17,7 @@ vim.opt.showmode = true
 vim.opt.laststatus = 3
 vim.opt.signcolumn = "yes"
 vim.opt.winborder = "single"
+vim.opt.pumborder = "single"
 
 -- wrap and linebreak
 vim.opt.wrap = false
