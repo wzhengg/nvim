@@ -22,9 +22,6 @@ vim.opt.winborder = "single"
 vim.opt.wrap = false
 vim.opt.linebreak = true
 
--- scrolloff
-vim.opt.sidescrolloff = 8
-
 -- better search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -33,12 +30,8 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- disable swapfile
-vim.opt.swapfile = false
-
 -- set leader key
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim" },
