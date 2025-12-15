@@ -74,7 +74,7 @@ vim.cmd.colorscheme("kanagawa")
 
 -- lsp
 
-vim.lsp.enable({ "gopls", "lua_ls", "nixd", "ts_ls" })
+vim.lsp.enable({ "clangd", "gopls", "lua_ls", "nixd", "ts_ls" })
 
 -- fzf
 
@@ -201,7 +201,7 @@ require("mini.statusline").setup()
 -- treesitter
 
 require("nvim-treesitter").install({
-	"c",
+	"c", "cpp",
 	"html", "json",
 	"javascript", "typescript", "jsx", "tsx",
 	"go", "gomod", "gosum",
