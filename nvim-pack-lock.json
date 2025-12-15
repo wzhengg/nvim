@@ -12,6 +12,10 @@
       "rev": "cdafc320f03f2572c40ab93a4eecb733d4016d07",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "kanagawa.nvim": {
+      "rev": "aef7f5cec0a40dbe7f3304214850c472e2264b10",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
     "mini.icons": {
       "rev": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428",
       "src": "https://github.com/nvim-mini/mini.icons",
@@ -21,10 +25,6 @@
       "rev": "14919901649d20d020e659c63c03baa75cd94f33",
       "src": "https://github.com/nvim-mini/mini.statusline",
       "version": "'main'"
-    },
-    "nvim": {
-      "rev": "da33755d00e09bff2473978910168ff9ea5dc453",
-      "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lint": {
       "rev": "a0718addcf9b5ba4325eb45441020bb824af9503",

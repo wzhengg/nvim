@@ -35,7 +35,6 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 
 vim.pack.add({
-	{ src = "https://github.com/catppuccin/nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/mfussenegger/nvim-lint" },
@@ -44,13 +43,34 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.statusline",                   version = "main", },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter",             version = "main", },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main", },
+	{ src = "https://github.com/rebelot/kanagawa.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 })
 
 -- colorscheme
 
-vim.cmd.colorscheme("catppuccin")
+require("kanagawa").setup({
+	undercurl = false,
+	colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+	overrides = function(colors)
+		local theme = colors.theme
+		return {
+			-- transparent floating windows
+			NormalFloat = { bg = "none" },
+			FloatBorder = { bg = "none" },
+			FloatTitle = { bg = "none" },
+
+			-- dark popup menus
+			Pmenu = { fg = theme.ui.shade0, bg = "none" },
+			PmenuSel = { fg = "none", bg = theme.ui.bg_p2 },
+			PmenuSbar = { bg = theme.ui.bg_m1 },
+			PmenuThumb = { bg = theme.ui.bg_p2 },
+		}
+	end,
+})
+
+vim.cmd.colorscheme("kanagawa")
 
 -- lsp
 
