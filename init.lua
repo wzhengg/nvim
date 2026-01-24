@@ -74,7 +74,7 @@ vim.cmd.colorscheme("kanagawa")
 
 -- lsp
 
-vim.lsp.enable({ "clangd", "gopls", "lua_ls", "nixd", "ts_ls" })
+vim.lsp.enable({ "gopls", "lua_ls", "nixd", "ts_ls" })
 
 -- fzf
 
