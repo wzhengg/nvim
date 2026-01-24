@@ -367,10 +367,6 @@ vim.keymap.set("n", "]i", diagnostic_jump(1, vim.diagnostic.severity.INFO))
 vim.keymap.set("n", "[h", diagnostic_jump(-1, vim.diagnostic.severity.HINT))
 vim.keymap.set("n", "]h", diagnostic_jump(1, vim.diagnostic.severity.HINT))
 
--- navigate quickfix
-vim.keymap.set("n", "[q", "<Cmd>cprev<CR>zz")
-vim.keymap.set("n", "]q", "<Cmd>cnext<CR>zz")
-
 -- quality-of-life yank, delete, paste
 vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y')
 vim.keymap.set({ "v", "x" }, "<leader>d", '"_d')
