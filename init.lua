@@ -37,7 +37,6 @@ vim.g.mapleader = " "
 vim.pack.add({
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/mfussenegger/nvim-lint" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-mini/mini.icons",                        version = "main", },
 	{ src = "https://github.com/nvim-mini/mini.statusline",                   version = "main", },
@@ -180,14 +179,6 @@ require("gitsigns").setup({
 
 		map({ "o", "x" }, "ih", gitsigns.select_hunk)
 	end,
-})
-
--- nvim-lint
-
-require("lint").linters_by_ft = {}
-
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
-	callback = function() require("lint").try_lint() end,
 })
 
 -- icons

@@ -26,10 +26,6 @@
       "src": "https://github.com/nvim-mini/mini.statusline",
       "version": "'main'"
     },
-    "nvim-lint": {
-      "rev": "a0718addcf9b5ba4325eb45441020bb824af9503",
-      "src": "https://github.com/mfussenegger/nvim-lint"
-    },
     "nvim-lspconfig": {
       "rev": "e0fae251f8459940331960106d4bd9457cec23de",
       "src": "https://github.com/neovim/nvim-lspconfig"
