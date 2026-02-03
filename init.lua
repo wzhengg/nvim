@@ -35,10 +35,10 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 
 vim.pack.add({
-	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-mini/mini.icons",            version = "main", },
+	{ src = "https://github.com/nvim-mini/mini.pick",             version = "main" },
 	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main", },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main", },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
@@ -73,46 +73,6 @@ vim.cmd.colorscheme("kanagawa")
 -- lsp
 
 vim.lsp.enable({ "gopls", "lua_ls", "nixd", "ts_ls" })
-
--- fzf
-
-require("fzf-lua").setup({
-	"hide",
-	winopts = {
-		fullscreen = true,
-		border = "solid",
-		preview = {
-			default = "builtin",
-			scrollbar = false,
-		},
-	},
-	keymap = {
-		builtin = {
-			false,
-			["<C-c>"] = "hide",
-			["<F1>"] = "toggle-help",
-		},
-		fzf = {
-			false,
-			["ctrl-y"] = "accept",
-			["ctrl-u"] = "unix-line-discard",
-			["ctrl-a"] = "beginning-of-line",
-			["ctrl-e"] = "end-of-line",
-			["alt-a"] = "toggle-all",
-			["alt-g"] = "first",
-			["alt-G"] = "last",
-		},
-	},
-	fzf_opts = {
-		["--cycle"] = true,
-	},
-})
-
-vim.keymap.set("n", "<leader>ff", require("fzf-lua").files)
-vim.keymap.set("n", "<leader>fg", require("fzf-lua").live_grep_native)
-vim.keymap.set("n", "<leader>fb", require("fzf-lua").buffers)
-vim.keymap.set("n", "<leader>fh", require("fzf-lua").helptags)
-vim.keymap.set("n", "<leader>fr", require("fzf-lua").resume)
 
 -- gitsigns
 
@@ -183,6 +143,18 @@ require("gitsigns").setup({
 -- icons
 
 require("mini.icons").setup()
+
+-- pick
+
+require("mini.pick").setup({
+	mappings = { choose = "<C-y>" },
+})
+
+vim.keymap.set("n", "<leader>fb", require("mini.pick").builtin.buffers)
+vim.keymap.set("n", "<leader>ff", require("mini.pick").builtin.files)
+vim.keymap.set("n", "<leader>fg", require("mini.pick").builtin.grep_live)
+vim.keymap.set("n", "<leader>fh", require("mini.pick").builtin.help)
+vim.keymap.set("n", "<leader>fr", require("mini.pick").builtin.resume)
 
 -- statusline
 

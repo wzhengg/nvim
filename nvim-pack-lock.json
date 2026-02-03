@@ -4,10 +4,6 @@
       "rev": "c2526f1cde528a66e086ab1668e996d162c75f4f",
       "src": "https://github.com/stevearc/conform.nvim"
     },
-    "fzf-lua": {
-      "rev": "95f6baea73d0440a28c55d370d424ac645b447a0",
-      "src": "https://github.com/ibhagwan/fzf-lua"
-    },
     "gitsigns.nvim": {
       "rev": "abf82a65f185bd54adc0679f74b7d6e1ada690c9",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -19,6 +15,11 @@
     "mini.icons": {
       "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
       "src": "https://github.com/nvim-mini/mini.icons",
+      "version": "'main'"
+    },
+    "mini.pick": {
+      "rev": "7c0a674f620ddc701903b887b2dade836b23ea79",
+      "src": "https://github.com/nvim-mini/mini.pick",
       "version": "'main'"
     },
     "mini.statusline": {
