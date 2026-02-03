@@ -76,23 +76,18 @@ vim.lsp.enable({ "gopls", "lua_ls", "nixd", "ts_ls" })
 
 -- gitsigns
 
+local signs = {
+	add = { text = "+" },
+	change = { text = "~" },
+	delete = { text = "_" },
+	topdelete = { text = "‾" },
+	changedelete = { text = "~" },
+	untracked = { text = "┆" },
+}
+
 require("gitsigns").setup({
-	signs = {
-		add = { text = "+" },
-		change = { text = "~" },
-		delete = { text = "_" },
-		topdelete = { text = "‾" },
-		changedelete = { text = "~" },
-		untracked = { text = "┆" },
-	},
-	signs_staged = {
-		add = { text = "+" },
-		change = { text = "~" },
-		delete = { text = "_" },
-		topdelete = { text = "‾" },
-		changedelete = { text = "~" },
-		untracked = { text = "┆" },
-	},
+	signs = signs,
+	signs_staged = signs,
 	on_attach = function(bufnr)
 		local gitsigns = require("gitsigns")
 
@@ -102,16 +97,16 @@ require("gitsigns").setup({
 			vim.keymap.set(mode, l, r, opts)
 		end
 
-		map("n", "]c", function()
+		map("n", "]h", function()
 			if vim.wo.diff then
-				vim.cmd.normal({ "]c", bang = true })
+				vim.cmd.normal({ "]h", bang = true })
 			else
 				gitsigns.nav_hunk("next")
 			end
 		end)
-		map("n", "[c", function()
+		map("n", "]h", function()
 			if vim.wo.diff then
-				vim.cmd.normal({ "[c", bang = true })
+				vim.cmd.normal({ "]h", bang = true })
 			else
 				gitsigns.nav_hunk("prev")
 			end
@@ -130,11 +125,6 @@ require("gitsigns").setup({
 
 		map("n", "<leader>hp", gitsigns.preview_hunk_inline)
 		map("n", "<leader>hb", gitsigns.blame_line)
-		map("n", "<leader>hB", gitsigns.blame)
-		map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
-
-		map("n", "<leader>hd", gitsigns.diffthis)
-		map("n", "<leader>hD", function() gitsigns.diffthis("~") end)
 
 		map({ "o", "x" }, "ih", gitsigns.select_hunk)
 	end,
