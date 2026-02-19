@@ -206,14 +206,16 @@ vim.keymap.set({ "n", "v" }, "<leader>cf", require("conform").format)
 
 -- configure diagnostics
 vim.diagnostic.config({
-	jump = { float = true },
+	jump = {
+		on_jump = function() vim.diagnostic.open_float() end
+	},
 	severity_sort = true,
 	virtual_text = true,
 })
 
 -- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function() vim.highlight.on_yank() end
+	callback = function() vim.hl.on_yank() end
 })
 
 -- clear search highlights
