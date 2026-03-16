@@ -31,10 +31,6 @@
       "rev": "1970f0d3bbb99c7659e58914948749437c7b7398",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
-    },
-    "oil.nvim": {
-      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
-      "src": "https://github.com/stevearc/oil.nvim"
     }
   }
 }

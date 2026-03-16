@@ -42,7 +42,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main", },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
 })
 
 -- colorscheme
@@ -175,15 +174,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end,
 })
-
--- oil
-
-require("oil").setup({
-	default_file_explorer = true,
-	skip_confirm_for_simple_edits = true,
-})
-
-vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
 -- conform
 
