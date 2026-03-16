@@ -36,7 +36,6 @@ vim.g.mapleader = " "
 
 vim.pack.add({
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-mini/mini.icons",            version = "main", },
 	{ src = "https://github.com/nvim-mini/mini.pick",             version = "main" },
 	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main", },
@@ -72,7 +71,7 @@ vim.cmd.colorscheme("kanagawa")
 
 -- lsp
 
-vim.lsp.enable({ "gopls", "lua_ls", "nixd", "ts_ls" })
+vim.lsp.enable({ "gopls", "lua_ls", "nixd" })
 
 -- gitsigns
 
