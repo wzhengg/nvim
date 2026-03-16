@@ -35,8 +35,7 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 
 vim.pack.add({
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/nvim-mini/mini.icons",            version = "main", },
+	{ src = "https://github.com/nvim-mini/mini.diff",             version = "main" },
 	{ src = "https://github.com/nvim-mini/mini.pick",             version = "main" },
 	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main", },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main", },
@@ -72,65 +71,17 @@ vim.cmd.colorscheme("kanagawa")
 
 vim.lsp.enable({ "gopls", "lua_ls", "nixd" })
 
--- gitsigns
+-- diff
 
-local signs = {
-	add = { text = "+" },
-	change = { text = "~" },
-	delete = { text = "_" },
-	topdelete = { text = "‾" },
-	changedelete = { text = "~" },
-	untracked = { text = "┆" },
-}
-
-require("gitsigns").setup({
-	signs = signs,
-	signs_staged = signs,
-	on_attach = function(bufnr)
-		local gitsigns = require("gitsigns")
-
-		local function map(mode, l, r, opts)
-			opts = opts or {}
-			opts.buffer = bufnr
-			vim.keymap.set(mode, l, r, opts)
-		end
-
-		map("n", "]h", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "]h", bang = true })
-			else
-				gitsigns.nav_hunk("next")
-			end
-		end)
-		map("n", "]h", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "]h", bang = true })
-			else
-				gitsigns.nav_hunk("prev")
-			end
-		end)
-
-		map("n", "<leader>hs", gitsigns.stage_hunk)
-		map("n", "<leader>hr", gitsigns.reset_hunk)
-
-		map("v", "<leader>hs", function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end)
-		map("v", "<leader>hr", function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end)
-
-		map("n", "<leader>hS", gitsigns.stage_buffer)
-		map("n", "<leader>hR", gitsigns.reset_buffer)
-
-		map("n", "<leader>hu", gitsigns.undo_stage_hunk)
-
-		map("n", "<leader>hp", gitsigns.preview_hunk_inline)
-		map("n", "<leader>hb", gitsigns.blame_line)
-
-		map({ "o", "x" }, "ih", gitsigns.select_hunk)
-	end,
+require("mini.diff").setup({
+	view = {
+		style = "sign",
+		signs = { add = "+", change = "~", delete = "_" },
+	},
+	mappings = { apply = "", reset = "" },
 })
 
--- icons
-
-require("mini.icons").setup()
+vim.keymap.set("n", "<leader>hd", function() require("mini.diff").toggle_overlay(0) end)
 
 -- pick
 
