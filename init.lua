@@ -35,7 +35,6 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 
 vim.pack.add({
-	{ src = "https://github.com/nvim-mini/mini.diff",             version = "main" },
 	{ src = "https://github.com/nvim-mini/mini.pick",             version = "main" },
 	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main", },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main", },
@@ -72,18 +71,6 @@ vim.cmd.colorscheme("kanagawa")
 -- lsp
 
 vim.lsp.enable({ "gopls", "lua_ls", "nixd" })
-
--- diff
-
-require("mini.diff").setup({
-	view = {
-		style = "sign",
-		signs = { add = "+", change = "~", delete = "_" },
-	},
-	mappings = { apply = "", reset = "" },
-})
-
-vim.keymap.set("n", "<leader>hd", function() require("mini.diff").toggle_overlay(0) end)
 
 -- pick
 
