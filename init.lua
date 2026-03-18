@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 require("conform").setup({
 	formatters_by_ft = {
-		go = { "goimports", "gofmt" },
+		go = { "gofmt" },
 		nix = { "nixfmt" },
 	},
 	format_on_save = {
