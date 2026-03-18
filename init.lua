@@ -36,8 +36,8 @@ vim.g.mapleader = " "
 
 vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.pick",             version = "main" },
-	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main", },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main", },
+	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 })
@@ -91,9 +91,8 @@ require("mini.statusline").setup()
 -- treesitter
 
 require("nvim-treesitter").install({
-	"c", "cpp",
+	"c",
 	"html", "json",
-	"javascript", "typescript", "jsx", "tsx",
 	"go", "gomod", "gosum",
 	"lua",
 	"markdown",
@@ -109,9 +108,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(ev.buf))
 		if not ok or not stats or stats.size > max_filesize then return end
 
-		if not pcall(vim.treesitter.start, ev.buf) then return end
-		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		pcall(vim.treesitter.start, ev.buf)
 	end,
 })
 
