@@ -35,7 +35,6 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 
 vim.pack.add({
-	{ src = "https://github.com/nvim-mini/mini.pick",             version = "main" },
 	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
@@ -71,18 +70,6 @@ vim.cmd.colorscheme("kanagawa")
 -- lsp
 
 vim.lsp.enable({ "gopls", "lua_ls", "nixd" })
-
--- pick
-
-require("mini.pick").setup({
-	mappings = { choose = "<C-y>" },
-})
-
-vim.keymap.set("n", "<leader>fb", require("mini.pick").builtin.buffers)
-vim.keymap.set("n", "<leader>ff", require("mini.pick").builtin.files)
-vim.keymap.set("n", "<leader>fg", require("mini.pick").builtin.grep_live)
-vim.keymap.set("n", "<leader>fh", require("mini.pick").builtin.help)
-vim.keymap.set("n", "<leader>fr", require("mini.pick").builtin.resume)
 
 -- statusline
 
