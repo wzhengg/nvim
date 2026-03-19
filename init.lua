@@ -38,7 +38,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
-	{ src = "https://github.com/stevearc/conform.nvim" },
 })
 
 -- colorscheme
@@ -77,16 +76,7 @@ require("mini.statusline").setup()
 
 -- treesitter
 
-require("nvim-treesitter").install({
-	"c",
-	"html", "json",
-	"go", "gomod", "gosum",
-	"lua",
-	"markdown",
-	"nix",
-	"sql",
-	"vim", "vimdoc",
-})
+require("nvim-treesitter").install({ "c", "go", "lua", "nix", "sql" })
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(ev)
@@ -98,24 +88,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		pcall(vim.treesitter.start, ev.buf)
 	end,
 })
-
--- conform
-
-require("conform").setup({
-	formatters_by_ft = {
-		go = { "gofmt" },
-		nix = { "nixfmt" },
-	},
-	format_on_save = {
-		timeout_ms = 500,
-		lsp_format = "fallback",
-	},
-	default_format_opts = {
-		lsp_format = "fallback",
-	},
-})
-
-vim.keymap.set({ "n", "v" }, "<leader>cf", require("conform").format)
 
 -- configure diagnostics
 vim.diagnostic.config({
