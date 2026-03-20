@@ -31,6 +31,8 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.opt.path:append("**")
+
 -- set leader key
 vim.g.mapleader = " "
 
