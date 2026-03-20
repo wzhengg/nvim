@@ -35,36 +35,8 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 
 vim.pack.add({
-	{ src = "https://github.com/nvim-mini/mini.statusline",       version = "main" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
-	{ src = "https://github.com/rebelot/kanagawa.nvim" },
+	{ src = "https://github.com/nvim-mini/mini.statusline", version = "main" }
 })
-
--- colorscheme
-
-require("kanagawa").setup({
-	undercurl = false,
-	commentStyle = { italic = false },
-	keywordStyle = { italic = false },
-	colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
-	overrides = function(colors)
-		local theme = colors.theme
-		return {
-			-- transparent floating windows
-			NormalFloat = { bg = "none" },
-			FloatBorder = { bg = "none" },
-			FloatTitle = { bg = "none" },
-
-			-- dark popup menus
-			Pmenu = { fg = theme.ui.shade0, bg = "none" },
-			PmenuSel = { fg = "none", bg = theme.ui.bg_p2 },
-			PmenuSbar = { bg = theme.ui.bg_m1 },
-			PmenuThumb = { bg = theme.ui.bg_p2 },
-		}
-	end,
-})
-
-vim.cmd.colorscheme("kanagawa")
 
 -- lsp
 
@@ -74,26 +46,9 @@ vim.lsp.enable({ "gopls", "lua_ls", "nixd" })
 
 require("mini.statusline").setup()
 
--- treesitter
-
-require("nvim-treesitter").install({ "c", "go", "lua", "nix", "sql" })
-
-vim.api.nvim_create_autocmd("FileType", {
-	callback = function(ev)
-		local max_filesize = 100 * 1024 -- 100 KB
-
-		local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(ev.buf))
-		if not ok or not stats or stats.size > max_filesize then return end
-
-		pcall(vim.treesitter.start, ev.buf)
-	end,
-})
-
 -- configure diagnostics
 vim.diagnostic.config({
-	jump = {
-		on_jump = function() vim.diagnostic.open_float() end
-	},
+	jump = { on_jump = function() vim.diagnostic.open_float() end },
 	severity_sort = true,
 	virtual_text = true,
 })
@@ -102,9 +57,6 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function() vim.hl.on_yank() end
 })
-
--- clear search highlights
-vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>")
 
 -- quality-of-life yank, delete, paste
 vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y')
