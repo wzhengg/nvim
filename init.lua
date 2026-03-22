@@ -36,17 +36,8 @@ vim.opt.path:append("**")
 -- set leader key
 vim.g.mapleader = " "
 
-vim.pack.add({
-	{ src = "https://github.com/nvim-mini/mini.statusline", version = "main" }
-})
-
 -- lsp
-
 vim.lsp.enable({ "gopls", "lua_ls", "nixd" })
-
--- statusline
-
-require("mini.statusline").setup()
 
 -- configure diagnostics
 vim.diagnostic.config({

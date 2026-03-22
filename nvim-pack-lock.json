@@ -1,9 +1,0 @@
-{
-  "plugins": {
-    "mini.statusline": {
-      "rev": "8c3829d4ef02b693f68e43fc131b433f11049b2b",
-      "src": "https://github.com/nvim-mini/mini.statusline",
-      "version": "'main'"
-    }
-  }
-}
