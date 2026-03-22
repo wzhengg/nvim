@@ -50,8 +50,3 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function() vim.hl.on_yank() end
 })
-
--- quality-of-life yank, delete, paste
-vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y')
-vim.keymap.set({ "v", "x" }, "<leader>d", '"_d')
-vim.keymap.set({ "v", "x" }, "<leader>p", '"_dP')
