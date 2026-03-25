@@ -1,1 +1,4 @@
-vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end)
+vim.keymap.set("n", "<localleader>cf",
+	function() vim.lsp.buf.format() end,
+	{ buffer = true }
+)

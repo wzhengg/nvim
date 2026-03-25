@@ -1,1 +1,6 @@
-vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end)
+vim.treesitter.start()
+
+vim.keymap.set("n", "<localleader>cf",
+	function() vim.lsp.buf.format() end,
+	{ buffer = true }
+)
