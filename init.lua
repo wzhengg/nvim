@@ -5,30 +5,20 @@ vim.opt.relativenumber = true
 -- indent and shift
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
 vim.opt.shiftround = true
-vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- appearance
-vim.opt.termguicolors = true
 vim.opt.cursorline = true
-vim.opt.showmode = true
 vim.opt.laststatus = 3
 vim.opt.signcolumn = "yes"
-vim.opt.winborder = "single"
 
--- wrap and linebreak
+-- no wrap
 vim.opt.wrap = false
-vim.opt.linebreak = true
 
 -- better search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
--- split direction
-vim.opt.splitbelow = true
-vim.opt.splitright = true
 
 vim.opt.path:append("**")
 
@@ -39,7 +29,7 @@ vim.g.maplocalleader = " "
 vim.cmd.colorscheme("retrobox")
 
 -- lsp
-vim.lsp.enable({ "gopls", "lua_ls", "nixd" })
+vim.lsp.enable({ "gopls" })
 
 -- configure diagnostics
 vim.diagnostic.config({
